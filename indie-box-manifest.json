@@ -1,0 +1,113 @@
+{
+    "type" : "app",
+
+    "roles" : {
+        "apache2" : {
+            "defaultcontext" : "/owncloud",
+            "depends" : [
+                "php",
+                "php-apache",
+                "php-gd"
+            ],
+            "apache2modules" : [
+                "rewrite",
+                "headers"
+            ],
+            "appconfigitems" : [
+                {
+                    "type" : "copyrecursive",
+                    "names" : [
+                        "3rdparty",
+                        "apps",
+                        "config",
+                        "console.php",
+                        "core",
+                        "cron.php",
+                        "db_structure.xml",
+                        "files",
+                        "index.html",
+                        "index.php",
+                        "l10n",
+                        "lib",
+                        "occ",
+                        "ocs",
+                        "public.php",
+                        "remote.php",
+                        "search",
+                        "settings",
+                        "status.php",
+                        "themes",
+                        "upgrade.php"
+                    ],
+                    "source" : "${package.codedir}/owncloud/$4",
+                    "uname" : "root",
+                    "gname" : "root",
+                    "mode:  " "preserve"
+                },
+                {
+                    "type"  : "directory",
+                    "name"  : "${appconfig.datadir}/data",
+                    "retention"       : "backup",
+                    "retentionbucket" : "datadir",
+                    "mode"  : "0750",
+                    "uname" : "${apache2.uname}",
+                    "gname" : "${apache2.gname}"
+                },
+                {
+                    "type"  : "directory",
+                    "name"  : "${appconfig.datadir}/config",
+                    "retention"       : "backup",
+                    "retentionbucket" : "configdir",
+                    "mode"  : "0750",
+                    "uname" : "www-data",
+                    "gname" : "www-data"
+                },
+                {
+                    "type"         : "file",
+                    "name"         : "${appconfig.apache2fragmentfile}",
+                    "template"     : "tmpl/htaccess.tmpl",
+                    "templatelang" : "varsubst"
+                },
+                {
+                    "type"         : "perlscript",
+                    "name"         : "bin/write-config.pl",
+                }
+            ],
+            "triggersactivate" : [
+                "apache2-restart"
+            ],
+            "installer" : {
+                "type"   : "perlscript",
+                "name"   : "bin/web-install.pl"
+            }
+        },
+        "ctrl" : {
+            "appconfigitems" : [
+                {
+                    "type"       : "mysql-database",
+                    "name"       : "maindb",
+                    "retention"       : "backup",
+                    "retentionbucket" : "maindb.mysqldump",
+                    "privileges" : "all privileges"
+                }
+            ]
+        }
+    },
+    "customizationpoints" : {
+        "adminlogin" : {
+            "name"        : "Administrator account name",
+            "tagline"     : "The Owncloud administrator account name, e.g. admin",
+            "type"        : "string",
+            "required"    : true,
+            "default" : {
+                "value" : "admin"
+            }
+        },
+        "adminpass" : {
+            "name"        : "Administrator password",
+            "tagline"     : "The Owncloud administrator password",
+            "type"        : "password",
+            "required"    : true
+        }
+    }
+}

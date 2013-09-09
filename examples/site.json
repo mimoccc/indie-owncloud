@@ -1,0 +1,13 @@
+ {
+   "siteid" : "s0001",
+   "hostname" : "example.com",
+
+   "appconfigs" : [
+     {
+       "appconfigid" : "a0001",
+       "context" : "",
+
+       "appid" : "indie-owncloud"
+     }
+   ]
+ }
