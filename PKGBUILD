@@ -11,12 +11,13 @@ groups=()
 depends=()
 backup=()
 source=("http://download.owncloud.org/community/owncloud-${pkgver}.tar.bz2")
+options=('!strip')
 md5sums=('76ef522124a23e3d65fe65de00ae487a')
 
 package() {
 # Manifest
-    mkdir -p $pkgdir/var/lib/indie-box/
-    install -m644 $startdir/indie-box-manifest.json $pkgdir/var/lib/indie-box/indie-owncloud.json
+    mkdir -p $pkgdir/var/lib/indie-box/manifests
+    install -m644 $startdir/indie-box-manifest.json $pkgdir/var/lib/indie-box/manifests/indie-owncloud.json
 
 # Code
     mkdir -p $pkgdir/usr/share/indie-owncloud/bin
@@ -30,5 +31,5 @@ package() {
 
 # License
     mkdir -p $pkgdir/usr/share/licenses/indie-owncloud
-    install -m644 $startdir/owncloud/COPYING-AGPL $pkgdir/usr/share/licenses/indie-owncloud/LICENSE
+    install -m644 $startdir/src/owncloud/COPYING-AGPL $pkgdir/usr/share/licenses/indie-owncloud/LICENSE
 }

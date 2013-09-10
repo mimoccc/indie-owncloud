@@ -42,12 +42,12 @@
                     "source" : "${package.codedir}/owncloud/$4",
                     "uname" : "root",
                     "gname" : "root",
-                    "mode:  " "preserve"
+                    "mode"  : "preserve"
                 },
                 {
                     "type"  : "directory",
                     "name"  : "${appconfig.datadir}/data",
-                    "retention"       : "backup",
+                    "retention"       : "keep",
                     "retentionbucket" : "datadir",
                     "mode"  : "0750",
                     "uname" : "${apache2.uname}",
@@ -56,7 +56,7 @@
                 {
                     "type"  : "directory",
                     "name"  : "${appconfig.datadir}/config",
-                    "retention"       : "backup",
+                    "retention"       : "keep",
                     "retentionbucket" : "configdir",
                     "mode"  : "0750",
                     "uname" : "www-data",
@@ -81,13 +81,13 @@
                 "name"   : "bin/web-install.pl"
             }
         },
-        "ctrl" : {
+        "mysql" : {
             "appconfigitems" : [
                 {
                     "type"       : "mysql-database",
                     "name"       : "maindb",
-                    "retention"       : "backup",
-                    "retentionbucket" : "maindb.mysqldump",
+                    "retention"  : "keep",
+                    "retention"  : "maindb",
                     "privileges" : "all privileges"
                 }
             ]
@@ -95,8 +95,6 @@
     },
     "customizationpoints" : {
         "adminlogin" : {
-            "name"        : "Administrator account name",
-            "tagline"     : "The Owncloud administrator account name, e.g. admin",
             "type"        : "string",
             "required"    : true,
             "default" : {
@@ -104,8 +102,6 @@
             }
         },
         "adminpass" : {
-            "name"        : "Administrator password",
-            "tagline"     : "The Owncloud administrator password",
             "type"        : "password",
             "required"    : true
         }
