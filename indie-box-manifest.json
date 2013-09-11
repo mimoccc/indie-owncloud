@@ -39,14 +39,14 @@
                         "themes",
                         "upgrade.php"
                     ],
-                    "source" : "${package.codedir}/owncloud/$4",
+                    "source" : "${package.codedir}/owncloud/$1",
                     "uname" : "root",
                     "gname" : "root",
                     "mode"  : "preserve"
                 },
                 {
                     "type"  : "directory",
-                    "name"  : "${appconfig.datadir}/data",
+                    "name"  : "${apache2.appconfig.datadir}/data",
                     "retention"       : "keep",
                     "retentionbucket" : "datadir",
                     "mode"  : "0750",
@@ -55,7 +55,7 @@
                 },
                 {
                     "type"  : "directory",
-                    "name"  : "${appconfig.datadir}/config",
+                    "name"  : "${apache2.appconfig.datadir}/config",
                     "retention"       : "keep",
                     "retentionbucket" : "configdir",
                     "mode"  : "0750",
@@ -64,13 +64,13 @@
                 },
                 {
                     "type"         : "file",
-                    "name"         : "${appconfig.apache2fragmentfile}",
+                    "name"         : "${apache2.appconfig.appconfigfragmentfile}",
                     "template"     : "tmpl/htaccess.tmpl",
                     "templatelang" : "varsubst"
                 },
                 {
                     "type"         : "perlscript",
-                    "name"         : "bin/write-config.pl",
+                    "source"       : "bin/write-config.pl",
                 }
             ],
             "triggersactivate" : [
@@ -86,8 +86,8 @@
                 {
                     "type"       : "mysql-database",
                     "name"       : "maindb",
-                    "retention"  : "keep",
-                    "retention"  : "maindb",
+                    "retention"        : "keep",
+                    "retentionbucket"  : "maindb",
                     "privileges" : "all privileges"
                 }
             ]
