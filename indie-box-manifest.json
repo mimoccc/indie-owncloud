@@ -10,16 +10,23 @@
                 "php-gd"
             ],
             "apache2modules" : [
+                "php5",
                 "rewrite",
                 "headers"
             ],
+            "phpmodules" : [
+                "gd",
+                "iconv",
+                "mysql",
+                "mysqli",
+                "zip"
+            ],
             "appconfigitems" : [
                 {
-                    "type" : "copyrecursive",
+                    "type" : "directorytree",
                     "names" : [
                         "3rdparty",
                         "apps",
-                        "config",
                         "console.php",
                         "core",
                         "cron.php",
@@ -39,14 +46,14 @@
                         "themes",
                         "upgrade.php"
                     ],
-                    "source" : "${package.codedir}/owncloud/$1",
+                    "source" : "owncloud/$1",
                     "uname" : "root",
                     "gname" : "root",
                     "mode"  : "preserve"
                 },
                 {
                     "type"  : "directory",
-                    "name"  : "${apache2.appconfig.datadir}/data",
+                    "name"  : "data",
                     "retention"       : "keep",
                     "retentionbucket" : "datadir",
                     "mode"  : "0750",
@@ -55,16 +62,16 @@
                 },
                 {
                     "type"  : "directory",
-                    "name"  : "${apache2.appconfig.datadir}/config",
+                    "name"  : "config",
                     "retention"       : "keep",
                     "retentionbucket" : "configdir",
                     "mode"  : "0750",
-                    "uname" : "www-data",
-                    "gname" : "www-data"
+                    "uname" : "${apache2.uname}",
+                    "gname" : "${apache2.gname}"
                 },
                 {
                     "type"         : "file",
-                    "name"         : "${apache2.appconfig.appconfigfragmentfile}",
+                    "name"         : "${appconfig.apache2.appconfigfragmentfile}",
                     "template"     : "tmpl/htaccess.tmpl",
                     "templatelang" : "varsubst"
                 },

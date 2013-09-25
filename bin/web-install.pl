@@ -2,7 +2,7 @@
 #
 # Access the OwnCloud installation for the first time.
 #
-# Copyright (C) 2013 Johannes Ernst
+# Copyright (C) 2013 Indie Box Project http://indieboxproject.org/
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@ use strict;
 use IndieBox::Utils;
 use POSIX;
 
-my $dir         = $varMap->{appconfig}->{contextroot};
-my $apacheUname = $varMap->{apache2}->{uname};
+my $dir         = $config->getResolve( 'appconfig.apache2.dir' );
+my $apacheUname = $config->getResolve( 'apache2.uname' );
 
 if( 'install' eq $operation ) {
     # now we need to hit the installation ourselves, otherwise the first user gets admin access

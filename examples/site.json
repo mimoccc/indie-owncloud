@@ -1,13 +1,24 @@
- {
-   "siteid" : "s0001",
-   "hostname" : "example.com",
+{
+  "siteid" : "s0001",
+  "hostname" : "example.com",
 
-   "appconfigs" : [
-     {
-       "appconfigid" : "a0001",
-       "context" : "",
+  "appconfigs" : [
+    {
+      "appconfigid" : "a0001",
+      "context" : "",
 
-       "appid" : "indie-owncloud"
-     }
-   ]
- }
+      "appid" : "indie-owncloud",
+
+      "customizationpoints" : {
+        "indie-owncloud" : {
+          "adminlogin" : {
+            "value" : "specialadmin"
+          },
+          "adminpass" : {
+            "value" : "specialpass"
+          }
+        }
+      }
+    }
+  ]
+}
