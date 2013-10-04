@@ -26,7 +26,7 @@ use POSIX;
 my $dir         = $config->getResolve( 'appconfig.apache2.dir' );
 my $apacheUname = $config->getResolve( 'apache2.uname' );
 
-if( 'install' eq $operation ) {
+if( 'runInstaller' eq $operation ) {
     # now we need to hit the installation ourselves, otherwise the first user gets admin access
     my $out;
     my $err;

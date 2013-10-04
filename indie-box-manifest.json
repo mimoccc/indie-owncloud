@@ -83,12 +83,9 @@
                     "source"       : "bin/write-config.pl",
                 }
             ],
-            "triggersactivate" : [
-                "apache2-restart"
-            ],
             "installer" : {
                 "type"   : "perlscript",
-                "name"   : "bin/web-install.pl"
+                "source" : "bin/web-install.pl"
             }
         },
         "mysql" : {
