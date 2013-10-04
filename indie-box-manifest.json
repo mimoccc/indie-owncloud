@@ -19,7 +19,8 @@
                 "iconv",
                 "mysql",
                 "mysqli",
-                "zip"
+                "zip",
+                "openssl"
             ],
             "appconfigitems" : [
                 {

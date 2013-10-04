@@ -1,0 +1,25 @@
+{
+  "siteid" : "s0002",
+  "hostname" : "bboneblack.aviatis.com",
+
+  "appconfigs" : [
+    {
+      "appconfigid" : "a0002",
+      "context" : "/own",
+      "isdefault" : true,
+
+      "appid" : "indie-owncloud",
+
+      "customizationpoints" : {
+        "indie-owncloud" : {
+          "adminlogin" : {
+            "value" : "specialadmin"
+          },
+          "adminpass" : {
+            "value" : "specialpass"
+          }
+        }
+      }
+    }
+  ]
+}
