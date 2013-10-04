@@ -1,4 +1,28 @@
 <Directory "${appconfig.apache2.dir}">
     AllowOverride All
-</Directory>
 
+# <IfModule mod_fcgid.c>
+# <IfModule mod_setenvif.c>
+# <IfModule mod_headers.c>
+    SetEnvIfNoCase ^Authorization$ "(.+)" XAUTHORIZATION=$1
+    RequestHeader set XAuthorization %{XAUTHORIZATION}e env=XAUTHORIZATION
+# </IfModule>
+# </IfModule>
+# </IfModule>
+
+# <IfModule env_module>
+    SetEnv htaccessWorking true
+# </IfModule>
+
+    RewriteEngine on
+    RewriteRule .* - [env=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    RewriteRule ^apps/([^/]*)/(.*\.(css|php))$ index.php?app=$1&getfile=$2 [QSA,L]
+    RewriteRule ^remote/(.*) remote.php [QSA,L]
+
+    AddType image/svg+xml svg svgz
+    AddEncoding gzip svgz
+
+    Options -Indexes
+
+</Directory>

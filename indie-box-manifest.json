@@ -12,7 +12,9 @@
             "apache2modules" : [
                 "php5",
                 "rewrite",
-                "headers"
+                "headers",
+                "env",
+                "setenvif"
             ],
             "phpmodules" : [
                 "gd",
