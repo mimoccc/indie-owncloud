@@ -1,23 +1,23 @@
 <Directory "${appconfig.apache2.dir}">
     AllowOverride All
 
-    SetEnvIfNoCase ^Authorization$ "(.+)" XAUTHORIZATION=$1
-    RequestHeader set XAuthorization %{XAUTHORIZATION}e env=XAUTHORIZATION
-    SetEnv htaccessWorking true
+#    SetEnvIfNoCase ^Authorization$ "(.+)" XAUTHORIZATION=$1
+#    RequestHeader set XAuthorization %{XAUTHORIZATION}e env=XAUTHORIZATION
+#    SetEnv htaccessWorking true
 
-    RewriteEngine on
-    RewriteContext "${appconfig.contextorslash}"
-    RewriteRule .* - [env=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-    RewriteRule ^.well-known/host-meta /public.php?service=host-meta [QSA,L]
-    RewriteRule ^.well-known/host-meta.json /public.php?service=host-meta-json [QSA,L]
-    RewriteRule ^.well-known/carddav /remote.php/carddav/ [R]
-    RewriteRule ^.well-known/caldav /remote.php/caldav/ [R]
-    RewriteRule ^apps/calendar/caldav.php remote.php/caldav/ [QSA,L]
-    RewriteRule ^apps/contacts/carddav.php remote.php/carddav/ [QSA,L]
-    RewriteRule ^apps/([^/]*)/(.*\.(css|php))$ index.php?app=$1&amp;getfile=$2 [QSA,L]
-    RewriteRule ^remote/(.*) remote.php [QSA,L]
+#    RewriteEngine on
+#    RewriteContext "${appconfig.contextorslash}"
+#    RewriteRule .* - [env=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+#    RewriteRule ^.well-known/host-meta /public.php?service=host-meta [QSA,L]
+#    RewriteRule ^.well-known/host-meta.json /public.php?service=host-meta-json [QSA,L]
+#    RewriteRule ^.well-known/carddav /remote.php/carddav/ [R]
+#    RewriteRule ^.well-known/caldav /remote.php/caldav/ [R]
+#    RewriteRule ^apps/calendar/caldav.php remote.php/caldav/ [QSA,L]
+#    RewriteRule ^apps/contacts/carddav.php remote.php/carddav/ [QSA,L]
+#    RewriteRule ^apps/([^/]*)/(.*\.(css|php))$ index.php?app=$1&amp;getfile=$2 [QSA,L]
+#    RewriteRule ^remote/(.*) remote.php [QSA,L]
 
-    RewriteRule ^index.php/(.*) $1 [L]
+#    RewriteRule ^index.php/(.*) $1 [L]
 
     AddType image/svg+xml svg svgz
     AddEncoding gzip svgz

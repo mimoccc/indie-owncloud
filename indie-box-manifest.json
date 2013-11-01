@@ -100,10 +100,12 @@
                     "source"       : "bin/write-config.pl",
                 }
             ],
-            "installer" : {
-                "type"   : "perlscript",
-                "source" : "bin/web-install.pl"
-            }
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "bin/web-install.pl"
+                }
+            ]
         },
         "mysql" : {
             "appconfigitems" : [
