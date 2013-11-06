@@ -74,7 +74,7 @@
                 {
                     "type"  : "directory",
                     "name"  : "data",
-                    "retention"       : "keep",
+                    "retentionpolicy" : "keep",
                     "retentionbucket" : "datadir",
                     "mode"  : "0750",
                     "uname" : "${apache2.uname}",
@@ -83,7 +83,7 @@
                 {
                     "type"  : "directory",
                     "name"  : "config",
-                    "retention"       : "keep",
+                    "retentionpolicy" : "keep",
                     "retentionbucket" : "configdir",
                     "mode"  : "0750",
                     "uname" : "${apache2.uname}",
@@ -112,7 +112,7 @@
                 {
                     "type"       : "mysql-database",
                     "name"       : "maindb",
-                    "retention"        : "keep",
+                    "retentionpolicy"  : "keep",
                     "retentionbucket"  : "maindb",
                     "privileges" : "all privileges"
                 }
